@@ -1,0 +1,277 @@
+<div [@flyInOut]="'in'" class="mt-1">
+   <main class="container-fluid mat-typography">
+      <form [formGroup]="form1">
+         <!-- first row -->
+         <section class="row">
+            <div class="col row-1">
+               <div>
+                  <div>
+                     <label>批號</label>
+                     <input width="100" formControlName="jobNo" 
+                          (keyup.enter)="checkJobNo()" (blur)="checkJobNo()" />
+                     <button mat-raised-button tabindex="-1" [disabled]="isBtnDisabled(createMode)" (click)="scanJobNo()"><mat-icon>camera</mat-icon></button>
+                     <input width="30" class="align-center"  tabindex="-1" formControlName="luoCode" />
+                  </div>
+
+                  <div class="make-wt">
+                     <label>毛重</label>
+                     <input type="number" width="90" class="align-right" formControlName="makeWt"  
+                        (keyup.enter)="checkMakeWt()" (blur)="checkMakeWt()" />
+                  </div>
+               </div>
+
+               <div>
+                  <label>尾桶?</label>
+                  <mat-radio-group formControlName="lastCtn" (change)="onLastCtnChange($event)">
+                     <mat-radio-button color="primary" value="Y">是(Y)</mat-radio-button>
+                     <mat-radio-button color="warn" value="N">否(N)</mat-radio-button>
+                  </mat-radio-group>
+
+                  <mat-checkbox color="primary" labelPosition="before" formControlName="jobEndCode"  (change)="onJobEndCodeChange($event)">
+                     批號完工?
+                  </mat-checkbox>
+               </div>
+
+            </div>
+         </section>
+         <!-- row -->
+
+         <section class="color-box">
+            <!-- 2nd row -->
+            <div class="row">
+               <div class="col row-2">
+                  <div>
+                     <label id="mia">產品規格</label>
+                     <input class="pdc-size" readonly tabindex="-1" formControlName="pdcSize" />
+                  </div>
+
+                  <div class="task-qty">
+                     <label>完工數量</label>
+                     <input width="130" class="align-right hightlight" readonly tabindex="-1" formControlName="taskQty" />
+
+                     <label style="margin-left: 5px;">不良品淨重</label>
+                     <input type="number" width="130" class="align-right" formControlName="faultWt" />
+                  </div>
+               </div>
+            </div>
+
+            <!-- 3nd row -->
+            <div class="row">
+               <div class="col row-3 md">
+                  <div>
+                     <label>累計數量</label>
+                     <input width="130" class="align-right" readonly tabindex="-1" formControlName="headQty" />
+
+                     <label>需求量上限</label>
+                     <input width="130" class="align-right" readonly tabindex="-1" formControlName="reqQtyUpperBound" />
+                  </div>
+
+                  <div>
+                     <label>需求量下限</label>
+                     <input width="130" class="align-right" readonly tabindex="-1" formControlName="reqQtyLowerBound" />
+                  </div>
+               </div>
+
+               <div class="col row-3 sm">
+                  <div>
+                     <div class="stack">
+                        <label>完工數量</label>
+                        <input width="130" class="align-right hightlight" readonly tabindex="-1" formControlName="taskQty" /> 
+                     </div>
+
+                     <div class="stack">
+                        <label>累計數量</label>
+                        <input width="130" class="align-right" readonly tabindex="-1" formControlName="headQty" />
+                     </div>
+                  </div>
+
+                  <div>
+                     <div class="stack">
+                        <label>需求量上限</label>
+                        <input width="130" class="align-right" readonly tabindex="-1" formControlName="reqQtyUpperBound" /> 
+                     </div>
+
+                     <div class="stack">
+                        <label>需求量下限</label>
+                        <input width="130" class="align-right" readonly tabindex="-1" formControlName="reqQtyLowerBound" /> 
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- 4nd row, 各一半, host table tag -->
+            <div class="row" style="margin-top: 5px">
+               <div class="col-sm-12 col-md-5">
+                  <table class="left-table">
+                     <tr>
+                        <td><label>機台</label></td>
+                        <td><input width="100" readonly tabindex="-1" formControlName="mchNo" /></td>
+
+                        <td><label>爐號</label></td>
+                        <td><input width="120" readonly tabindex="-1" formControlName="luoName" /></td>
+                     </tr>
+
+                     <tr>
+                        <td><label>桶號</label></td>
+                        <td><input width="40" class="align-center" readonly tabindex="-1" formControlName="ctnNo" /></td>
+
+                        <td><label>桶別</label></td>
+                        <td>
+                           <mat-select width="130" formControlName="ctnKind" 
+                              (selectionChange)="onCtnKindChange($event)">
+                              <mat-option *ngFor="let ctnKind of ctnKindList" [value]="ctnKind.key">
+                                 {{ctnKind.key}} - {{ ctnKind.value }}
+                              </mat-option>
+                           </mat-select>
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+
+               <!-- table grid -->
+               <div class="col-sm-12 col-md-7">
+                  <table>
+                     <thead style="background: gray; color: white">
+                        <tr>
+                           <th></th>
+                           <th>線材卷號</th>
+                           <th>結案</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <button mat-raised-button tabindex="-1" [disabled]="isBtnDisabled(createMode)" (click)="scanCoilNo1()"><mat-icon>camera</mat-icon></button>
+                           </td>
+                           <td>
+                              <input #coilNo1 width="120" formControlName="coilNo1" 
+                                 (keyup.enter)="getHeaDrwStok(coilNo1.value, 'coilNo1')" 
+                                 (blur)="getHeaDrwStok(coilNo1.value, 'coilNo1')" />
+                           </td>
+                           <td>
+                              <mat-radio-group formControlName="endCode1">
+                                 <mat-radio-button color="primary" value="Y">是(Y)</mat-radio-button>
+                                 <mat-radio-button color="warn" value="N">否(N)</mat-radio-button>
+                              </mat-radio-group>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td>
+                              <button mat-raised-button tabindex="-1" [disabled]="isBtnDisabled(createMode)" (click)="scanCoilNo2()"><mat-icon>camera</mat-icon></button>
+                           </td>
+                           <td>
+                              <input #coilNo2 width="120" formControlName="coilNo2" 
+                                (keyup.enter)="getHeaDrwStok(coilNo2.value, 'coilNo2')" 
+                                (blur)="getHeaDrwStok(coilNo2.value, 'coilNo2')" />
+                           </td>
+                           <td>
+                              <mat-radio-group formControlName="endCode2" >
+                                 <mat-radio-button color="primary" value="Y">是(Y)</mat-radio-button>
+                                 <mat-radio-button color="warn" value="N">否(N)</mat-radio-button>
+                              </mat-radio-group>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td>
+                              <button mat-raised-button tabindex="-1" [disabled]="isBtnDisabled(createMode)" (click)="scanCoilNo3()"><mat-icon>camera</mat-icon></button>
+                           </td>
+                           <td>
+                              <input #coilNo3 width="120" formControlName="coilNo3" 
+                                (keyup.enter)="getHeaDrwStok(coilNo3.value, 'coilNo3')" 
+                                (blur)="getHeaDrwStok(coilNo3.value, 'coilNo3')" />
+                           </td>
+                           <td>
+                              <mat-radio-group formControlName="endCode3" >
+                                 <mat-radio-button color="primary" value="Y">是(Y)</mat-radio-button>
+                                 <mat-radio-button color="warn" value="N">否(N)</mat-radio-button>
+                              </mat-radio-group>
+                           </td>
+                        </tr>
+
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </section>
+      </form>
+   </main>
+
+   <!-- buttons -->
+   <section class="container buttons" style="margin-top: 5px">
+      <button mat-raised-button color="primary" (click)="doClear()"><mat-icon>clear</mat-icon>清畫面</button>
+      <button mat-raised-button color="warn" [disabled]="isBtnDisabled(normalMode)" (click)="doDelete()"><mat-icon>delete</mat-icon>刪除</button>
+      <button mat-raised-button (click)="doQuery()"><mat-icon>search</mat-icon>查詢</button>
+      <button mat-raised-button color="primary" [disabled]="isBtnDisabled(createMode)" (click)="doCreate()"><mat-icon>save</mat-icon>存檔</button>
+      <div>
+        <button mat-raised-button color="primary" [disabled]="isBtnDisabled(normalMode)" (click)="doPrev()"><mat-icon>chevron_left</mat-icon>上筆</button>
+        <button mat-raised-button color="primary" [disabled]="isBtnDisabled(normalMode)" (click)="doNext()">下筆<mat-icon>chevron_right</mat-icon></button>
+        <button mat-raised-button [disabled]="isBtnDisabled(normalMode)" (click)="doTable()"><mat-icon>grid_on</mat-icon>表格</button>
+      </div>
+   </section>
+
+  </div>
+<!-- animation wrapper-->
+
+<!-- (keyup.enter)="doMia()"  -->
+<!-- (blur)="doMia()" /> -->
+
+
+<footer class="footer mat-typography">
+   <div>紀錄: <span class="badge badge-pill badge-primary">{{rowIndex + 1}} / {{rowCount}}</span>
+   </div>
+</footer>
+
+<!-- web camera -->
+<div id="videoContainer" [hidden]="isCameraHidden" >
+   <video id="video" (click)="resetCamera()"></video>
+</div>
+
+<!-- beep -->
+<audio id="beep" src="/assets/img/barcode.wav" #beep></audio>
+
+<!-- debug -->
+<section *ngIf="debug">
+   <div class="container mat-typography">
+      <br/> 需求量______ : {{dto.reqQty}}<br/> 需求量上(U)限: <span style="color: blue">{{dto.reqQtyUpperBound}}</span> <br/> 需求量下(D)限: <span style="color: red">{{dto.reqQtyLowerBound}}</span><br/> OverRate____: <span style="color: red"><strong>{{dto.overRate}}</strong></span>
+
+      <br/> 累計數量設定:
+      <input [(ngModel)]="dto.headQty" />
+      <hr/> jobEndCode dto: {{dto.jobEndCode}}<br/> jobEndCode frm: {{formMain.get("jobEndCode").value}}<br/>
+
+      <button mat-stroked-button (click)="test()">test</button>
+      <button mat-mini-fab color="accent"><mat-icon>camera</mat-icon></button>
+
+      <br/> {{dto | json}}<br/> luoCode: {{dto.luoCode}}
+   </div>
+</section>
+
+<!-- Progress section -->
+<mat-card *ngIf="dto.jobNo" class="mat-typography" style="margin: 0 5px">
+  <div style="margin: 0; font-size: 1.2rem; font-weight: bold">完工進度</div>
+  <div style="display: flex; align-items: center">
+    <app-donut [donutSingle]="donutSingle"></app-donut>
+    <table>
+      <tr>
+        <td style="text-align: right">下限:</td>
+        <td style="font-weight: bold; text-align: right">{{dto.reqQtyLowerBound}}</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">需求量:</td>
+        <td style="font-weight: bold; background: orange; text-align: right">{{dto.reqQty}}</td>
+      </tr>
+      <tr>
+        <td style="text-align: right">上限:</td>
+        <td style="font-weight: bold; text-align: right">{{dto.reqQtyUpperBound}}</td>
+      </tr>
+    </table>
+    <div style="margin-left: 1rem; font-size: 1.7rem; font-weight: bold">累積數量: {{accQty}} </div>
+  </div>
+
+  <mat-divider [inset]="true"></mat-divider>
+
+  <app-progress [data]="progressData" style="margin-top: 8px"></app-progress>
+</mat-card>
+
+<!-- <button (click)="test()">test</button> -->

@@ -1,0 +1,49 @@
+<header class="mat-typography">
+   <!------------------------------- header的總內容大框 ------------------------------------------>
+   <div class="menu">
+      
+      <!-- logo圖 -->
+      <img id="logo" src="/assets/img/chu.png" />
+
+      <!-----------大螢幕選取作業元件區塊----------->
+      <div class="landscape">
+         <a mat-raised-button color="primary" routerLink="spc/spc0202m" (click)="select(spc0202m)" routerLinkActive="active">{{spc0202m}}</a>
+         <a mat-raised-button color="primary" routerLink="spc/spc0232m" (click)="select(spc0232m)" routerLinkActive="active">{{spc0232m}}</a>
+         <!-- <a mat-raised-button color="primary" routerLink="spc/zxingtest" (click)="select(zxingtest)" routerLinkActive="active">Zxing</a> -->
+      </div>
+
+      <!-----------小螢幕選單選取作業元件區塊----------->
+      <div class="portrait">
+         <!-- menu 圖示 -->
+         <button class="btn-trigger" mat-raised-button color="primary" [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon>選單</button>
+
+         <!-- menu 本身 -->
+         <mat-menu #menu>
+            <a mat-menu-item routerLink="spc/spc0202m" (click)="select(spc0202m)">
+               <mat-icon>apps</mat-icon>{{spc0202m}}</a>
+            <a mat-menu-item routerLink="spc/spc0232m" (click)="select(spc0232m)">
+               <mat-icon>apps</mat-icon>{{spc0232m}}</a>
+
+            <!--
+            <a mat-menu-item routerLink="spc/zxingtest" (click)="select(zxingtest)">
+               <mat-icon>apps</mat-icon>{{zxingtest}}</a>
+            -->
+         </mat-menu>
+
+         <!-- 選取作業元件名稱 -->
+         <span class="app-name">{{appName}}</span>
+
+      </div>
+
+      <!-- 今日日期 -->
+      <div class="align-right today">{{today$ | async | date:"yyyy-MM-dd" }}</div>
+
+      <!-- 登出按鈕 -->
+      <a class="logout" (click)="doLogout()">登出</a>
+
+   </div>
+
+   <div class="empname">
+      <span>{{padUser?.empName}}</span>
+   </div>
+</header>

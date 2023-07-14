@@ -1,0 +1,288 @@
+@import "~sass/mixins";
+
+// for mobile phone
+// context decide breakpoint
+$extraSmall: 400;
+$small: 497;
+$medium: 874;
+
+$container-padding: 3px;
+
+// default 15px
+.container-fluid {
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+// default 15pxx
+.row {
+    margin-left: $container-padding * -1;
+    margin-right: $container-padding * -1;
+}
+
+
+//  
+.mat-radio-button[value="N"] {
+  margin-left: 0.25rem;
+
+  @include forSmallScreens($extraSmall) {
+    margin-left: 0;
+  }
+}
+
+label {
+  white-space: nowrap;
+}
+
+// vertical 
+.stack {
+    display: inline-flex;
+    flex-direction: column;
+    input {
+        margin-right: 16px;
+    }
+}
+
+.color-box {
+    background: lighten(wheat, 2%);
+    padding: 3px 0;
+    border: 1px solid orange;
+    border-radius: 5px;
+    margin-top: 7px;
+}
+
+.hightlight {
+    background: lighten(green, 50);
+}
+
+.row-1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    button {
+      margin: 0 4px;
+    }
+
+    label {
+      margin: 0 5px;
+    }
+
+    .mat-checkbox {
+      margin-left: 16px;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+
+      label:first-child {
+        margin-left: 0 !important;
+      }
+    }
+
+    div + div {
+      margin-left: 5px;
+    }
+
+    @include forSmallScreens($medium) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        div+div {
+          margin-top: 5px;
+          margin-left: 0;
+        }
+    }
+
+    @include forSmallScreens($small) {
+        // just make smaller
+        button {
+            width: 65px !important;
+            min-width: 65px;
+        }
+    }
+
+    @include forSmallScreens($extraSmall) {
+      > div:first-child {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+}
+
+.row-2 {
+    display: flex;
+    align-items: center;
+
+    input {
+      margin-left: 5px;
+    }
+
+    div + div {
+      margin-left: 5px;
+    }
+
+    @include forSmallScreens($medium) {
+        flex-direction: column;
+        align-items: flex-start;
+        div+div {
+            margin: 0;
+            margin-top: 5px;
+        }
+    }
+
+    @include forSmallScreens($small) {
+        .task-qty {
+            display: none;
+        }
+
+        .pdc-size {
+          width: calc(100% - 90px);  // 90px is label
+        }
+
+    }
+}
+
+// experience
+.row-3 {
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+
+    label:first-child {
+        margin-right: 5px !important;
+    }
+
+    label:not(:first-child) {
+        margin-right: 5px !important;
+        margin-left: 5px !important;
+    }
+
+    &.md {
+      div:last-child label {
+        margin-left: 5px;
+      }
+    }
+
+    &.sm {
+        display: none;
+    }
+
+    @include forSmallScreens($medium) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        div:last-child {
+            margin-left: 218px;
+            margin-top: 5px;
+        }
+    }
+
+    @include forSmallScreens($small) {
+        &.md {
+            display: none;
+        }
+
+        &.sm {
+            display: flex;
+            flex-direction: column;
+            div:last-child {
+                margin-left: 0;
+                margin-top: 3px;
+            }
+            div label:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.container.buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    button {
+        margin-right: 8px;
+        margin-bottom: 5px;
+    }
+}
+
+// label @ odd column
+table.left-table {
+    tr td:nth-of-type(odd) {
+        text-align: right;
+    }
+    mat-select {
+        padding: 2px 0;
+    }
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 3px;
+    border-top: 1px solid lightgray;
+    width: 100%;
+    z-index: 100;
+}
+
+// height influence scan speed. 100vmin seems quickly, ???
+#videoContainer {
+   position: absolute;
+   top: 0;
+   left: 0;
+
+   width: 100vw;
+   height: 61.8vmin;
+   overflow: hidden;
+   z-index: 999;
+
+   #video {
+     min-width: 100%;
+     min-height: 100%;
+   }
+}
+
+/*
+@include forLargeScreens($small) {
+   #videoContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 350px;
+      overflow: hidden;
+
+      video {
+       width: 100%;
+      }
+  }
+}
+
+@include forLargeScreens($medium) {
+    #videoContainer {
+        position: fiexed;
+        //top: 50%;    
+        top: 0;    
+        //transform: translateY(-50%);
+
+        left: calc(50% - 400px);
+
+        width: 800px;
+        height: 340px;
+        overflow: hidden;
+        z-index: 999;
+
+        video {
+          width: 100%;
+      }
+    }
+}
+*/

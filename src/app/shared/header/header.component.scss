@@ -1,0 +1,126 @@
+// ~ look in src/
+@import "~sass/mixins";
+
+// for mobile phone
+$small: 497;
+$medium: 874;
+
+header {
+    padding-left: 5px;
+    background: black;
+    color: white;
+    font-weight: bold;
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+//-----------header的總內容大框-----------
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    a {
+        margin-right: 5px;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .active {
+        border-bottom: 3px solid gold;
+    }
+
+    // 欸欸欸可以這樣用?! 靠右對齊就是margin-left自動，然後設定margin-right為你想要的邊界
+    .align-right {
+        margin-left: auto;
+        margin-right: 1rem;
+    }
+
+    .logout {
+        align-self: flex-end;
+        margin-bottom: 8px;
+        padding: 3px 5px;
+        border: 1px solid gold;
+    }
+
+    @include forSmallScreens($small) {
+        .today {
+            display: none !important;
+        }
+        .logout {
+            margin-left: auto;
+        }
+    }
+}
+//-----------------------------------------------------
+
+.mat-menu-item {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+//-----------使用者名稱-----------
+.empname {
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+
+//-----------小螢幕選單選取作業元件區塊-----------
+.portrait {
+    display: flex;
+    align-items: center;
+
+    .app-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-left: 3px;
+    }
+    .btn-trigger {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    @include forSmallScreens($small) {
+        .app-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-left: 3px;
+        }
+    }
+}
+
+
+//-----------給手機用 medium-----------
+@include forSmallScreens($medium) {
+   .landscape {
+      display: none;
+   }
+   .portrait {
+      display: block;
+   }
+
+   #logo {
+      display: none;
+   }
+   .logout {
+      margin: 0;
+      margin-top: 20px;
+   }
+
+}
+
+
+//-----------給電腦用 medium-----------
+@include forLargeScreens($medium) {
+  .landscape {
+     display: block;
+  }
+  .portrait {
+     display: none;
+  }
+
+  #logo {
+     display: block;
+  }
+}

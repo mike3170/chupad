@@ -1,0 +1,9 @@
+input[type="text"]:disabled {
+  background: white;
+  background-color: white;
+}
+
+input:disabled {
+  background: white;
+  font-weight: bold;
+}

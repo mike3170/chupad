@@ -1,0 +1,59 @@
+#inputBarcode {
+  position: absolute;
+  top: 77px;
+  left: calc(50% - 350px);
+
+  width: 700px;
+  height: 340px;
+
+  overflow: hidden;
+  //z-index: 999;
+}
+
+video {
+  width: 700px;
+  height: 340px;
+  z-index: 100;
+}
+
+canvas {
+  width: 700px;
+  height: 340px;
+  z-index: 200;
+
+	position: absolute;
+  top: 0;
+  z-index: 999;
+
+}
+	
+canvas.drawing,
+canvas.drawingBuffer {
+	position: absolute;
+  top: 0;
+  left: calc(50% - 350px);
+  z-index: 300;
+  border: 3px solid red;
+}
+
+// 風景畫
+/*
+@media screen and (orientation: landscape) {
+  #inputBarcode {
+    width: 500px;
+    height: 350px ;
+    align-self: center;
+    justify-content: center;
+  }
+
+}
+
+@media screen and (orientation: portrait) {
+  #inputBarcode {
+    width: 500px;
+    height: 600px ;
+    align-items: flex-start;
+  }
+}
+
+*/

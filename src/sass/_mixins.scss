@@ -1,0 +1,13 @@
+// desktop-first
+@mixin forSmallScreens($media) {
+  @media (max-width: $media/16+em) { //1em = 16px
+     @content;
+  }
+}
+
+// mobile-first
+@mixin forLargeScreens($media) {
+  @media (min-width: $media/16+em) { //1em = 16px
+     @content;
+  }
+}

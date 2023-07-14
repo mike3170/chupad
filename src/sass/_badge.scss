@@ -1,0 +1,236 @@
+
+// Color contrast
+@function color-yiq($color) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= 150) {
+    @return #111;
+  } @else {
+    @return #fff;
+  }
+}
+
+//---------------------------------------------------------
+@mixin hover {
+  // TODO: re-enable along with mq4-hover-shim
+//  @if $enable-hover-media-query {
+//    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
+//    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
+//    @media (hover: hover) {
+//      &:hover { @content }
+//    }
+//  }
+//  @else {
+    &:hover { @content; }
+//  }
+}
+
+$enable-hover-media-query : true;
+
+@mixin hover-focus {
+  @if $enable-hover-media-query {
+    &:focus {
+      @content;
+    }
+    @include hover { @content; }
+  } @else {
+    &:focus,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin plain-hover-focus {
+  @if $enable-hover-media-query {
+    &,
+    &:focus {
+      @content;
+    }
+    @include hover { @content; }
+  } @else {
+    &,
+    &:focus,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin hover-focus-active {
+  @if $enable-hover-media-query {
+    &:focus,
+    &:active {
+      @content;
+    }
+    @include hover { @content; }
+  } @else {
+    &:focus,
+    &:active,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+
+@mixin border-radius($radius: $border-radius) {
+    border-radius: $radius;
+}
+
+@mixin badge-variant($bg) {
+  color: color-yiq($bg);
+  background-color: $bg;
+
+  &[href] {
+    @include hover-focus {
+      color: color-yiq($bg);
+      text-decoration: none;
+      background-color: darken($bg, 10%);
+    }
+  }
+}
+
+//
+// Color system
+//
+
+// stylelint-disable
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$grays: () !default;
+$grays: map-merge((
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900
+), $grays);
+
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+$colors: () !default;
+$colors: map-merge((
+  "blue":       $blue,
+  "indigo":     $indigo,
+  "purple":     $purple,
+  "pink":       $pink,
+  "red":        $red,
+  "orange":     $orange,
+  "yellow":     $yellow,
+  "green":      $green,
+  "teal":       $teal,
+  "cyan":       $cyan,
+  "white":      $white,
+  "gray":       $gray-600,
+  "gray-dark":  $gray-800
+), $colors);
+
+$primary:       $blue !default;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+), $theme-colors);
+// stylelint-enable
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval:      8% !default;
+
+
+
+
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-bold:            700 !default;
+
+$border-width:                1px !default;
+$border-color:                $gray-200 !default;
+
+$border-radius:               .25rem !default;
+$border-radius-lg:            .3rem !default;
+$border-radius-sm:            .2rem !default;
+
+// $badge-font-size:             100% !default;
+$badge-font-size:             2rem !default;
+$badge-font-weight:           $font-weight-bold !default;
+$badge-padding-y:             .25em !default;
+$badge-padding-x:             .4em !default;
+$badge-border-radius:         $border-radius !default;
+
+$badge-pill-padding-x:        .6em !default;
+$badge-pill-border-radius:    10rem !default;
+
+.badge {
+  display: inline-block;
+  padding: $badge-padding-y $badge-padding-x;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  @include border-radius($badge-border-radius);
+
+  // Empty badges collapse automatically
+  &:empty {
+    display: none;
+  }
+}
+
+
+$badge-pill-padding-x:              .6em !default;
+$badge-pill-border-radius:          10rem !default;
+
+.badge-pill {
+  padding-right: $badge-pill-padding-x;
+  padding-left: $badge-pill-padding-x;
+  @include border-radius($badge-pill-border-radius);
+}
+
+@each $color, $value in $theme-colors {
+  .badge-#{$color} {
+    @include badge-variant($value);
+  }
+}

@@ -1,0 +1,71 @@
+mat-select.ng-invalid.ng-touched {
+    border: 2px solid red;
+    outline: none;
+}
+
+mat-select.ng-invalid.ng-dirty {
+    border: 2px solid red;
+    outline: none;
+    animation: error 1000ms infinite;
+}
+
+mat-checkbox.ng-invalid.ng-touched {
+    //border: 2px solid red;
+    background: red;
+}
+
+mat-checkbox.ng-invalid.ng-dirty {
+    //border: 2px solid red;
+    background: red;
+    animation: error 1000ms infinite;
+}
+
+//-----------------------------------------
+.mat-radio-label-content {
+    color: black !important;
+    font-weight: bold !important;
+}
+
+.mat-checkbox {
+    color: brown;
+    font-weight: bold;
+}
+
+.mat-checkbox-disabled {
+    .mat-checkbox-label {
+        color: brown !important;
+        font-weight: bold;
+    }
+}
+
+//------------------
+.mat-select {
+    color: black;
+    border-radius: .25rem;
+    font-weight: bold;
+    background: white;
+    border: 1px solid gray;
+    padding: 0px 0px 0px 2px;
+}
+
+.mat-select-panel {
+    .mat-optgroup-label,
+    .mat-option {
+        font-size: inherit;
+        font-weight: bold;
+    }
+}
+
+
+.mat-select-disabled {
+    background-color: #eee;
+}
+
+.mat-select-disabled .mat-select-value {
+    color: black;
+}
+
+
+.mat-border {
+    border: 1px solid lightgray !important;
+}

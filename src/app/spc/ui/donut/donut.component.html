@@ -1,0 +1,9 @@
+<svg *ngIf="donutSingle" class="progress-svg" width="100" height="100" viewBox="0 0 100 100">
+   <circle cx="50" cy="50" class="progress-meter" [attr.r]="radius" stroke-width="12" />
+
+   <circle cx="50" cy="50" class="progress-value" [attr.r]="radius" 
+      [style.strokeDasharray]="circumference" [style.strokeDashoffset]="dashoffset" stroke-width="12">
+   </circle>
+
+   <text x="50" y="50" class="text">{{value}}%</text>
+</svg>

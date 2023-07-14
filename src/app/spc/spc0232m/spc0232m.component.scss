@@ -1,0 +1,170 @@
+@import "~sass/mixins";
+
+// for mobile phone
+// context decide breakpoint
+$extraSmall: 400;
+$small: 497;
+$medium: 874;
+
+$container-padding: 3px;
+
+// default 15px
+.container-fluid {
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+.d-flex {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin: 0 3px;
+  }
+
+  label:not(:first-child) {
+    margin-left: 8px;
+  }
+
+}
+
+//  
+.mat-radio-button[value="N"] {
+  margin-left: 0.3em;
+}
+
+.mat-select {
+  padding: 5px 0;
+}
+
+.mt3 {
+  margin-top: 3px;
+}
+
+.mt5 {
+  margin-top: 5px;
+}
+
+label {
+  white-space: nowrap;
+  margin-right: 3px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 3px;
+    border-top: 1px solid lightgray;
+    width: 100%;
+    z-index: 100;
+}
+
+.color-box {
+    background: lighten(khaki, 7%);
+    padding: 3px 0;
+    border: 1px solid darken(khaki, 30%);
+    border-radius: 5px;
+    margin-top: 7px;
+}
+
+.hightlight {
+    background: lighten(green, 50);
+}
+
+.container.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  button {
+      margin-right: 8px;
+      margin-bottom: 5px;
+  }
+}
+
+.spinner-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0 , 0, 0 , .35);
+  z-index: 999;
+
+  .spinner {
+    position: absolute;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    width: 250px;
+    padding: .5em;
+  }
+
+}
+
+// height influence scan speed. 100vmin seems quickly, ???
+#videoContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 61.8vmin;
+  overflow: hidden;
+  z-index: 999;
+
+  #video {
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+
+/*
+@include forLargeScreens($small) {
+   #inputBarcode, #dav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 350px;
+      overflow: hidden;
+      z-index: 999;
+      video {
+       width: 100%;
+      }
+  }
+
+
+}
+
+@include forLargeScreens($medium) {
+    #inputBarcode {
+        position: fiexed;
+        //top: 50%;    
+        top: 0;    
+        //transform: translateY(-50%);
+
+        left: calc(50% - 400px);
+
+        width: 800px;
+        height: 340px;
+        overflow: hidden;
+        z-index: 999;
+        video {
+          width: 100%;
+      }
+    }
+}
+*/

@@ -1,0 +1,41 @@
+<div style="margin: 0 1em">
+  <h3> foo works! </h3>
+
+  <form [formGroup]="form1">
+    <input formControlName="name" />
+    <br>
+    <br>
+    <input formControlName="age" />
+    <br><br>
+    <label>尾桶?</label>
+    <mat-radio-group formControlName="lastCtn" (change)="onLastCtnChange($event)">
+      <mat-radio-button color="primary" value="Y">是(Y)</mat-radio-button>
+      <mat-radio-button color="warn" value="N">否(N)</mat-radio-button>
+    </mat-radio-group>
+
+    <br><br>
+    <mat-checkbox color="primary" labelPosition="before" [(indeterminate)]="foo" formControlName="jobEndCode"
+      (change)="onJobEndCodeChange($event)">
+      批號完工?
+    </mat-checkbox>
+  </form>
+
+  <br>
+  <div style="font-size: 1.2rem">
+    {{form1.value | json}}
+  </div>
+  <br>
+  <div>
+    form1 valid: {{form1.valid}}
+  </div>
+
+  <br>
+  <button mat-stroked-button (click)="reset()">Reset</button>
+  <button mat-stroked-button style="margin-left: .5em" (click)="disable()">disable</button>
+  <button mat-stroked-button style="margin-left: .5em" (click)="enable()">enable</button>
+  <br>
+  <br>
+  <button mat-stroked-button (click)="combine()">CombineLatest</button>
+  <button mat-stroked-button (click)="forkjoin()">forkjoin</button>
+</div>
+

@@ -1,0 +1,44 @@
+:host {
+  display: block;
+}
+
+.tick {
+  stroke:black;
+  stroke-width:3px;
+  stroke-dasharray:2px;
+}
+
+.tick-label {
+  dominant-baseline: hanging;
+  text-anchor: middle;
+}
+
+.progress-meter {
+  fill: none;
+  stroke-width: 1px;
+  stroke: black;
+}
+
+.progress-value {
+  fill: #4CAF50;;
+}
+
+.acc-text {
+  dominant-baseline: middle;
+  text-anchor: end;
+  fill: white;
+}
+
+.axis-label {
+  dominant-baseline: hanging;
+  text-anchor: middle;
+}
+
+.info {
+  fill: blue; 
+  dominant-baseline: hanging; 
+  text-anchor: start;
+
+  font-size:14px; 
+  font-weight:bold;
+}

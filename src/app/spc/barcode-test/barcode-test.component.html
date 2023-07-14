@@ -1,0 +1,44 @@
+<div class="container-fluid">
+   <header>
+      <h2>barcode test</h2>
+   </header>
+
+   <label>bar code 1:</label>
+   <div class="input-wrapper">
+      <input [(ngModel)]="barcode1" style="font-size: 1.5rem; width: 350px">
+      <button mat-raised-button (click)="getBarcode1()">
+        <mat-icon>camera</mat-icon>
+      </button>
+   </div>
+
+   <hr>
+
+   <label>bar code 2:</label>
+   <div class="input-wrapper">
+      <input [(ngModel)]="barcode2" style="font-size: 1.5rem; width: 350px">
+      <button mat-raised-button (click)="getBarcode2()">
+        <mat-icon>camera</mat-icon>
+      </button>
+   </div>
+
+   <hr/>
+
+   <button mat-raised-button style="background: indigo; color: white" (click)="doClear()">clear code </button>
+
+</div>
+<!-- container -->
+
+<!-- camera -->
+<!-- <div [hidden]="isHidden" id="inputBarcode" #inputBarcode></div>  -->
+
+<div [hidden]="isHidden" id="inputBarcode" #inputBarcode>
+   <video></video>
+   <canvas class="drawingBuffer"></canvas>
+</div>
+
+<audio id="beep" src="/assets/img/barcode.wav"></audio>
+
+<button mat-button (click)="beep()">beep</button>
+
+<br>
+<button mat-raised-button (click)="getDevices()">Media devices</button>

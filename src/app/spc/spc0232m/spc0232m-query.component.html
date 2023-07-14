@@ -1,0 +1,28 @@
+<h2 mat-dialog-title style="border-bottom: 1px solid lightgray;margin:0; margin-top: -18px;padding: 0">條件查詢視窗</h2>
+<div mat-dialog-content>
+   <form [formGroup]="formQry" >
+      <table class="mat-typography">
+         <tr>
+            <td><label>批號</label></td>
+            <td>
+              <input width="180" formControlName="jobNo" />
+            </td>
+         </tr>
+         <tr>
+            <td><label>爐號代碼</label></td>
+            <td><input width="180" formControlName="luoCode" /></td>
+         </tr>
+         <tr>
+            <td><label>爐號名稱</label></td>
+            <td><input width="180" formControlName="luoName" /></td>
+         </tr>
+      </table>
+   </form>
+</div>
+
+<div mat-dialog-actions style="display: flex; align-items: center; justify-content: center">
+   <button mat-raised-button color="primary" (click)="doQuery()"><mat-icon>directions_run</mat-icon>執行</button>
+   <mat-spinner diameter="40" *ngIf="isLoading" style="margin: 0 3px"></mat-spinner>
+   <button mat-raised-button mat-dialog-close="hello david" ><mat-icon>cancel</mat-icon>取消</button>
+</div>
+<!-- {{formQry.value | json}} -->

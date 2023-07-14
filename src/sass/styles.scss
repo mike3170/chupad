@@ -1,0 +1,181 @@
+@import "./variables";
+@import "./mixins";
+@import "./crud";
+@import "./badge";
+@import "./mat";
+
+$font-size: 1.3rem;
+// rest body
+body {
+    margin: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+// test
+//$wsizes: ( 
+//  30: 30px, 40: 40px, 50: 50px, 60: 60px, 70: 70px, 80: 80px, 90: 90px, 
+//  100: 100px, 110: 110px, 120: 120px, 130: 130px, 140: 140px, 150: 150px, 
+//  200: 200px, 300: 300px) !default;
+//@each $prop,
+//$abbrev in (width: w) {
+//    @each $size,
+//    $length in $wsizes {
+//        .#{$abbrev}#{$size} {
+//            #{$prop}: $length !important;
+//        }
+//    }
+//}
+// spacing util
+.mt-1 {
+    margin-top: .25rem !important;
+}
+
+.mt-2 {
+    margin-top: .5rem !important;
+}
+
+.mt-3 {
+    margin-top: .75rem !important;
+}
+
+// test
+.ml-1 {
+    margin-left: .25rem !important;
+}
+
+.ml-2 {
+    margin-left: .5rem !important;
+}
+
+.mr-1 {
+    margin-right: .25rem !important;
+}
+
+.mr-2 {
+    margin-right: .5rem !important;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+// form
+form label {
+    font-size: $font-size;
+    color: brown;
+    font-weight: bold;
+}
+
+input {
+    //padding: 5px 3px 3px 3px;
+    padding: 7px 3px 3px 3px;
+    border-radius: .25rem;
+    font-size: $font-size;
+    font-weight: bold;
+}
+
+// invalid and touched 
+input.ng-invalid.ng-touched {
+    border: 2px solid red;
+    outline: none;
+}
+
+// invalid and dirty
+input.ng-invalid.ng-dirty {
+    border: 2px solid red;
+    outline: none;
+    animation: error 1000ms infinite;
+}
+
+input.align-center {
+    text-align: center;
+}
+
+input.align-right {
+    text-align: right;
+}
+
+//--------------------------
+.flash {
+    animation: flash 3000ms infinite;
+}
+
+.error {
+    background: red; // color: white;
+}
+
+@keyframes error {
+    0% {
+        background: white;
+    }
+    50% {
+        background: pink;
+    }
+    100% {
+        background: white;
+    }
+}
+
+@keyframes flash {
+    0% {
+        background: #00f;
+    }
+    10% {
+        background: #8e44ad;
+    }
+    20% {
+        background: #1abc9c;
+    }
+    30% {
+        background: #d35400;
+    }
+    40% {
+        background: #00f;
+    }
+    50% {
+        background: #34495e;
+    }
+    60% {
+        background: #00f;
+    }
+    70% {
+        background: #2980b9;
+    }
+    80% {
+        background: #f1c40f;
+    }
+    90% {
+        background: #2980b9;
+    }
+    100% {
+        background: #0ff;
+    }
+}
+
+.foo {
+
+}
+
+mat-select {
+    font-size: 1.3rem;
+}
+
+.snackbar-bg {
+    background: rgb(231, 15, 141);
+}
+
+.mat-simple-snackbar {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.my-dialog {
+    .mat-dialog-container {
+        padding: 0 5px 5px 5px;
+        background: rgb(230, 159, 230);
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,23 @@
+.progress-svg {
+  transform: rotate(-90deg);
+}
+
+.progress-meter, .progress-value {
+  fill: none;
+}
+
+.progress-meter {
+  stroke: #ccc;
+}
+
+.progress-value {
+  stroke: #4CAF50;
+  transition: all 100ms;
+}
+
+.text {
+  transform: rotate(90deg);
+  transform-origin: 50% 50%;
+  text-anchor: middle;
+  alignment-baseline: middle;
+}

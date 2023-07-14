@@ -1,0 +1,17 @@
+<mat-card class="my-card">
+  <mat-card-header>
+    <mat-card-title><h2>請選擇作業<mat-icon>menu</mat-icon></h2></mat-card-title>
+  </mat-card-header>
+  <!-- <mat-card-content> -->
+  <!-- </mat-card-content> -->
+  <mat-card-actions>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+      <button mat-button color="primary" (click)="doHead()"   style="font-size: 1.5rem; font-weight: bold">1. 成型完工輸入</button>
+      <button mat-button color="primary" (click)="doThread()" style="margin-top: 0.5em; font-size: 1.5rem; font-weight: bold">2. 輾牙完工輸入</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
+<div style="margin-left: 2em">
+  version: {{version}}
+</div>

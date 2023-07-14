@@ -1,0 +1,10 @@
+export const environment = {
+  isPad: true,
+  production: true,
+  brand: "ABC 公司",
+  version: 1.1,
+
+  apiUrl:    "https://192.168.1.50:8443/api", 
+  logoutUrl: "/logout" 
+  // logoutUrl: "https://192.168.1.50:8443/logout" 
+};

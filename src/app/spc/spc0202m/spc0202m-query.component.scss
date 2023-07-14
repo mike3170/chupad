@@ -1,0 +1,21 @@
+table {
+  border-spacing: 5px;
+}
+
+table tr td:first-child {
+  text-align: right;
+  font-weight: bold;
+}
+
+label {
+  color: brown;
+}
+
+input {
+  border-radius: 5px;
+} 
+ 
+input:focus {
+  outline: none;
+  background: gold;
+}

@@ -1,0 +1,107 @@
+$title-color: #369;
+
+// master header
+.msh {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 5px;
+
+  .title {
+    margin: 0;
+    padding: 0;
+    color: $title-color;
+    font-weight: bold;
+  }
+
+  .msg {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+
+    .record {
+      padding: 2px 10px;
+      border-left: 1px solid gray;
+      border-right: 1px solid gray;
+      background: wheat;
+    }
+
+    .mode {
+      margin: 0;
+      padding: 0 5px;
+      color: indianred;
+      font-weight: bold;
+    }
+  }
+}
+
+// for CRUD buttons 
+.crud-buttons {
+  display: flex;
+  align-items: center;
+
+  div + div {
+    margin-left: 4px;
+  }
+}
+
+//--------------------------------
+//input {
+//  padding: 5px;
+//  font-size: 16px;
+//}
+
+/*
+input[readonly] {
+  border: 1px solid gray;
+  outline: none;
+  background: #eee;
+  color: black;
+  border-radius: 5px;
+}
+*
+
+//---------------------------------------
+.hasError {
+  border-left: 2px solid red;
+}
+
+input.ng-dirty.ng-invalid {
+  border: 2px solid #ff0000
+}
+
+
+/**
+ * default 40*40 ,when in table td break the layout 
+ * needs to attn to input padding, height
+ */
+$sm-size: 33px;
+
+.mat-icon-button {
+    &.sm {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.mat-button {
+    &.sm {
+        width: $sm-size;
+        height: $sm-size;
+        line-height: $sm-size;
+        padding: 0;
+        margin: 0;
+        min-width: 50px;
+    }
+}
+
+.mat-mini-fab {
+    &.sm {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+}

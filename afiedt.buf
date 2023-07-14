@@ -1,0 +1,2 @@
+select emp_id, first_name from emp
+/

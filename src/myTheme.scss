@@ -1,0 +1,26 @@
+//@import '~@angular/material/theming';
+@import '../node_modules/@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+  // $font-family: 'system-ui, arial, Roboto, monospace',
+  $font-family: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500),
+  $button: mat-typography-level(16px, 24px, 500)
+);
+
+@include mat-core($custom-typography);
+//$primary: mat-palette($mat-orange, 800);
+//$accent:  mat-palette($mat-light-blue, 600, A100, A400);
+//$warn:    mat-palette($mat-red, 600);
+
+//$primary: mat-palette($mat-yellow, A700);
+//$accent:  mat-palette($mat-light-blue, 600, A100, A400);
+//$warn:    mat-palette($mat-red, 600);
+
+$primary: mat-palette($mat-light-blue, 600, A100, A400);
+$accent:  mat-palette($mat-amber, A200, A100, A400);
+$warn:    mat-palette($mat-red, 600);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
